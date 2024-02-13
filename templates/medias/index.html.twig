@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medias index{% endblock %}
+
+{% block body %}
+    <h1>Medias index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo1</th>
+                <th>Photo2</th>
+                <th>Photo3</th>
+                <th>Photo4</th>
+                <th>Photo5</th>
+                <th>Video1</th>
+                <th>Video2</th>
+                <th>Video3</th>
+                <th>Video4</th>
+                <th>Video5</th>
+                <th>Virtuel1</th>
+                <th>Virtuel2</th>
+                <th>Property</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for media in medias %}
+            <tr>
+                <td>{{ media.id }}</td>
+                <td>{{ media.photo1 }}</td>
+                <td>{{ media.photo2 }}</td>
+                <td>{{ media.photo3 }}</td>
+                <td>{{ media.photo4 }}</td>
+                <td>{{ media.photo5 }}</td>
+                <td>{{ media.video1 }}</td>
+                <td>{{ media.video2 }}</td>
+                <td>{{ media.video3 }}</td>
+                <td>{{ media.video4 }}</td>
+                <td>{{ media.video5 }}</td>
+                <td>{{ media.virtuel1 }}</td>
+                <td>{{ media.virtuel2 }}</td>
+                <td>{{ media.property }}</td>
+                <td>
+                    <a href="{{ path('app_medias_show', {'id': media.id}) }}">show</a>
+                    <a href="{{ path('app_medias_edit', {'id': media.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_medias_new') }}">Create new</a>
+{% endblock %}

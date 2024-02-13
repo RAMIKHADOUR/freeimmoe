@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medias{% endblock %}
+
+{% block body %}
+    <h1>Medias</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ media.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo1</th>
+                <td>{{ media.photo1 }}</td>
+            </tr>
+            <tr>
+                <th>Photo2</th>
+                <td>{{ media.photo2 }}</td>
+            </tr>
+            <tr>
+                <th>Photo3</th>
+                <td>{{ media.photo3 }}</td>
+            </tr>
+            <tr>
+                <th>Photo4</th>
+                <td>{{ media.photo4 }}</td>
+            </tr>
+            <tr>
+                <th>Photo5</th>
+                <td>{{ media.photo5 }}</td>
+            </tr>
+            <tr>
+                <th>Video1</th>
+                <td>{{ media.video1 }}</td>
+            </tr>
+            <tr>
+                <th>Video2</th>
+                <td>{{ media.video2 }}</td>
+            </tr>
+            <tr>
+                <th>Video3</th>
+                <td>{{ media.video3 }}</td>
+            </tr>
+            <tr>
+                <th>Video4</th>
+                <td>{{ media.video4 }}</td>
+            </tr>
+            <tr>
+                <th>Video5</th>
+                <td>{{ media.video5 }}</td>
+            </tr>
+            <tr>
+                <th>Virtuel1</th>
+                <td>{{ media.virtuel1 }}</td>
+            </tr>
+            <tr>
+                <th>Virtuel2</th>
+                <td>{{ media.virtuel2 }}</td>
+            </tr>
+            <tr>
+                <th>Property</th>
+                <td>{{ media.property }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_medias_index') }}">back to list</a>
+
+    <a href="{{ path('app_medias_edit', {'id': media.id}) }}">edit</a>
+
+    {{ include('medias/_delete_form.html.twig') }}
+{% endblock %}
