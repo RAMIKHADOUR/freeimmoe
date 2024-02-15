@@ -22,33 +22,17 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom', TextType::class,[
             'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'50'],
-        
-            'label_attr'=>['class'=>'form-label'],
             'constraints'=>[new NotBlank(),new Assert\Length(['min'=>2,'max'=> 50])]])
 
-            ->add('prenom',TextType::class,[
-            'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'50'],
-        
-            'label_attr'=>['class'=>'form-label'],
-            'constraints'=>[new Assert\NotBlank(),new Assert\Length(['min'=>2, 'max'=>50])]])
-            
+            ->add('prenom', TextType::class,[
+                'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'50'],
+                'constraints'=>[new NotBlank(),new Assert\Length(['min'=>2,'max'=> 50])]])
             ->add('tel_portable',TextType::class,[
-                'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'10','placeholder'=>'Tél-Fixe'],
-                    
-                'label_attr'=>['class'=>'form-label'],
-                'constraints'=>[new Assert\NotBlank()]])
-
-            ->add('tele_fixe',TextType::class,[
-                    'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'10','placeholder'=>'Tél-Fixe'],
-                    
-                    'label_attr'=>['class'=>'form-label']])
-
-            ->add('site_web',TextType::class,[
-                        'attr'=>['class'=>'form-control','minlength'=>'2','maxlength'=>'10','placeholder'=>'Tél-Fixe'],
-                        
-                        'label_attr'=>['class'=>'form-label']])
-
-
+                    'attr'=>['class'=>'form-control'],
+                    'label_attr'=>['class'=>'form-label'],
+                    'constraints'=>[new Assert\NotBlank()]])
+            ->add('tele_fixe')
+            ->add('site_web')
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -76,6 +60,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+        ;
         ;
     }
 

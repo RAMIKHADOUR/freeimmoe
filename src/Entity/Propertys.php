@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PropertysRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PropertysRepository::class)]
@@ -19,60 +19,46 @@ class Propertys
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull()]
     private ?string $code = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
     private ?float $surface = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotNull()]
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
+    
+   
     private ?float $prix = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
+    
+   
     private ?int $chambres = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
+   
     private ?int $salle_bains = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
+    
     private ?int $etages = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
-    #[Assert\Positive()]
     private ?int $numero_etage = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\NotBlank()]
-    #[Assert\Length(min:2,max:100)]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotBlank()]
-    #[Assert\Length(min:2,max:50)]
     private ?string $ville = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
+ 
     private ?int $code_postale = null;
 
     #[ORM\Column(length: 100)]
-    #[Assert\NotBlank()]
-    #[Assert\Length(min:2,max:100)]
     private ?string $region = null;
 
     #[ORM\Column(nullable: true)]
@@ -94,15 +80,20 @@ class Propertys
     private ?bool $camera = null;
 
     #[ORM\Column(type: Types::BINARY)]
-    #[Assert\NotNull()]
+    #[Assert\Image(
+        minWidth: 200,
+        maxWidth: 400,
+        minHeight: 200,
+        maxHeight: 400,
+    )]
     private $image = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
+
     private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
+    
     private ?DateTimeImmutable $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'propertys')]
@@ -122,6 +113,7 @@ class Propertys
         $this->createdAt=new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
         $this->medias = new ArrayCollection();
+
     }
 
     public function getId(): ?int

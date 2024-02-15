@@ -20,7 +20,7 @@
                 <td>{{ type_property.typeProperty }}</td>
                 <td>
                     <a href="{{ path('app_type_property_show', {'id': type_property.id}) }}">show</a>
-                    <a href="{{ path('app_type_property_edit', {'id': type_property.id}) }}">edit</a>
+                
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_property_new') }}">Create new</a>
+    
 {% endblock %}

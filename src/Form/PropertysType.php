@@ -12,6 +12,7 @@ class PropertysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        
             ->add('code')
             ->add('surface')
             ->add('description')
@@ -31,11 +32,6 @@ class PropertysType extends AbstractType
             ->add('piscine')
             ->add('camera')
             ->add('image')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
-            ->add('categorys')
-            ->add('typeprops')
         ;
     }
 

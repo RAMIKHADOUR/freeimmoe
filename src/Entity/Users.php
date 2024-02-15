@@ -32,12 +32,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(min:2,max:50)]
     private ?string $prenom = null;
 
-    #[ORM\Column]
+    #[ORM\Column (length:50)]
     #[Assert\NotBlank()]
-    private ?int $tel_portable = null;
+    private ?string $tel_portable = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $tele_fixe = null;
+    #[ORM\Column(length:50,nullable: true)]
+    private ?string $tele_fixe = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $site_web = null;
@@ -49,23 +49,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     #[Assert\NotNull()]
-    private array $roles = [];
+    private array $roles = ['ROLE_USER'];
     
-
-    private ?string $plainPassword = null;
-
+    private ?string $plainPassword=null;
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank()]
     private ?string $password = null;
 
-   
 
     #[ORM\Column]
-    #[Assert\NotNull()]
     private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Propertys::class)]
@@ -267,7 +262,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeProperty(Propertys $property): static
     {
         if ($this->propertys->removeElement($property)) {
-            // set the owning side to null (unless already changed)
+           
             if ($property->getUser() === $this) {
                 $property->setUser(null);
             }
